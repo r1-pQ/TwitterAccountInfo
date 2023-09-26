@@ -34,6 +34,7 @@ class webHookEditor:
                         {
                             "title": title,
                             "description": description,
+                            "color": 1127128,
                             "url": url,
                             "footer": {
                                 "text": dt_now.strftime('%Y年%m月%d日 %H:%M'),

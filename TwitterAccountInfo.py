@@ -7,6 +7,7 @@ import re
 
 class TwitterAccountInfo:
     def __init__(self):
+        self.date = None
         self.follow = None
         self.follower = None
         self.icon = None
@@ -44,13 +45,15 @@ class TwitterAccountInfo:
         self.description = find(by=By.XPATH, value='/html/body/div[2]/div/div[3]/div/div[4]').text
         follow_count = find(by=By.XPATH, value='/html/body/div[2]/div/div[3]/div/div[6]').text
         self.icon = find(by=By.XPATH, value="/html/body/div[2]/div/div[3]/div/img").get_attribute("src")
+        self.date = find(by=By.XPATH, value="/html/body/div[2]/div/div[3]/div/div[7]").text
         ff = follow_count.split()
         self.follower = re.sub(r"\D", "", ff[3])
         self.follow = re.sub(r"\D", "", ff[0])
 
         browser.close()
         return {"Screen Name": self.userName, "User Id": self.userid, "Description": self.description,
-                "follow": self.follow, "follower": self.follower, "icon": self.icon}
+                "follow": self.follow, "follower": self.follower, "accountDate": self.date, "icon": self.icon}
+
 
 if __name__ == "__main__":
     print("a")

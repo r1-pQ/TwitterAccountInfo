@@ -2,14 +2,14 @@ import json
 from urllib.request import Request, urlopen
 import datetime
 
-
+dt_now = datetime.datetime.now()
 class webHookEditor:
     def HookEdit(self, webhook_url, embed=False, name="TwitterAccountInfo",
                  avatar_url="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6cc3c481a15a141738_icon_clyde_white_RGB.png",
                  message=None, title=None, description=None, url=None, footer_icon_url=None, image_icon=None,
                  thumbnail=None, author=None, author_url=None,
-                 author_icon=None, fn1=None, fn2=None, fv1=None, fv2=None):
-        dt_now = datetime.datetime.now()
+                 author_icon=None, fn1=None, fn2=None, fv1=None, fv2=None, footer_text=dt_now.strftime('%Y年%m月%d日 %H:%M')):
+
         headers = {
             "Content-Type": "application/json",
             "User-Agent": "DiscordBot (private use) Python-urllib/3.10",
@@ -37,7 +37,7 @@ class webHookEditor:
                             "color": 1127128,
                             "url": url,
                             "footer": {
-                                "text": dt_now.strftime('%Y年%m月%d日 %H:%M'),
+                                "text": footer_text,
                                 "icon_url": footer_icon_url
                             },
                             # "image": {
